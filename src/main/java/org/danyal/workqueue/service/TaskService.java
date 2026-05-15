@@ -1,5 +1,6 @@
 package org.danyal.workqueue.service;
 
+import org.danyal.workqueue.exception.TaskNotFoundException;
 import org.danyal.workqueue.model.Task;
 import org.danyal.workqueue.model.TaskStatus;
 
@@ -21,5 +22,12 @@ public class TaskService {
     }
     public List<Task> listTasks(){
         return new ArrayList<>(tasks.values());
+    }
+    public Task getTaskById(Long id){
+        Task task = tasks.get(id);
+        if(task == null){
+            throw new TaskNotFoundException(id);
+        }
+        return task;
     }
 }
