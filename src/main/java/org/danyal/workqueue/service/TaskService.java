@@ -4,7 +4,9 @@ import org.danyal.workqueue.model.Task;
 import org.danyal.workqueue.model.TaskStatus;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TaskService {
@@ -16,5 +18,8 @@ public class TaskService {
         tasks.put(idCounter, task);
         idCounter++;
         return task;
+    }
+    public List<Task> listTasks(){
+        return new ArrayList<>(tasks.values());
     }
 }
